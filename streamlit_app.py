@@ -370,7 +370,7 @@ SCOPE = "openid profile email"
 # ### Comment this stuff out if doing on Local Machine
 if "auth" not in st.session_state:
     # create a button to start the OAuth2 flow
-    oauth2 = OAuth2Component(CLIENT_ID, CLIENT_SECRET, AUTHORIZE_URL, TOKEN_URL, REFRESH_TOKEN_URL, REVOKE_TOKEN_URL)
+    oauth2 = OAuth2Component(CLIENT_ID, CLIENT_SECRET, AUTHORIZE_URL, TOKEN_URL, REFRESH_TOKEN_URL, REVOKE_TOKEN_URL, revocation_endpoint_auth_method="client_secret_post")
     result = oauth2.authorize_button(
         name="Continue with Google",
         icon="https://www.google.com.tw/favicon.ico",
