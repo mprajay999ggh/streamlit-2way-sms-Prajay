@@ -222,8 +222,6 @@ def sms_api(action, member_id, message_id = None, message_text = None):
         'x-api-key':'ja2mfRpohq9hmtMri9Rp7aav9kJt6F5t9wHGHtGW'
     }
 
-    # for now hardcode the member_id to me 
-    # member_id =   '0010400001FCuG5AAL'
 
     if action == 'list':
         data = {
@@ -588,7 +586,7 @@ else:
                                 (ss.backlog_df.LANGUAGE.isin(lang_use))].reset_index()
 
     # print the backlog dataframe
-    st.dataframe(ss.df_toshow[['STATUS','CHG_RESPONSE','CLIENT','PROGRAM','TOUCHPOINT_NAME','BODY','MESSAGE_SENT','CREATED_DATE','OUTCOME_CODE','OUTCOME_SUBCODE']], hide_index=True)
+    st.dataframe(ss.df_toshow[['MEMBER_ID','STATUS','CHG_RESPONSE','CLIENT','PROGRAM','TOUCHPOINT_NAME','BODY','MESSAGE_SENT','CREATED_DATE','OUTCOME_CODE','OUTCOME_SUBCODE']], hide_index=True)
 
     # some logic that if the checkbox to text is unchecked, the queue counting starts over
     if ss.start_button == False:
@@ -636,6 +634,7 @@ else:
             # tmp_df['age'] = today.year - tmp_df.MEMBER_DOB.year - ((today.month, today.day) < (tmp_df.MEMBER_DOB.month, tmp_df.MEMBER_DOB.day))
 
             st.write('**Member Name:** ' + tmp_df.ACCOUNT_FIRST_NAME + ' ' + tmp_df.ACCOUNT_LAST_NAME)
+            st.write('**Member ID:** ' + str(tmp_df.MEMBER_ID))
             st.write('**Member Age:** ' + str(tmp_df.age))
             message =  '**Message: "' + tmp_df.BODY + '"**'
             st.write(message) 
