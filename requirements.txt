@@ -1,0 +1,8 @@
+pandas==2.2.0
+snowflake==0.7.0
+snowflake-connector-python==3.7.1
+snowflake-snowpark-python==1.13.0
+snowflake._legacy==0.7.0
+snowflake.core==0.7.0
+streamlit==1.31.1
+streamlit-oauth==0.1.8
