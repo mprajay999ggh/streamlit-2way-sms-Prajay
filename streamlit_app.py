@@ -64,7 +64,8 @@ def snf_queries():
         'role': st.secrets["snowflake"]["role"],
         'warehouse': st.secrets["snowflake"]["warehouse"],
         'database': st.secrets["snowflake"]["database"],
-        'schema': st.secrets["snowflake"]["schema"]
+        'schema': st.secrets["snowflake"]["schema"],
+        'insecure_mode': True  # Bypass OCSP certificate validation for Streamlit Cloud
     }
 
     # Use password-based authentication
