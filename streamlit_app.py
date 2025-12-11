@@ -214,12 +214,11 @@ def next_sms():
 @st.cache_data 
 def sms_api(action, member_id, message_id = None, message_text = None):
     # set up and run the sms API
-    url = "https://agd9kg004g.execute-api.us-west-2.amazonaws.com/v1/sender/sms_templated_responses"  # prod
-    # url = "https://pqmgc8vel6.execute-api.us-west-2.amazonaws.com/v1/sender/sms_templated_responses"  #dev
+    url = st.secrets["api"]["sms_api_url"]
 
     headers = {
         'Content-Type':'application/json',
-        'x-api-key':'ja2mfRpohq9hmtMri9Rp7aav9kJt6F5t9wHGHtGW'
+        'x-api-key': st.secrets["api"]["x_api_key"]
     }
 
 
@@ -279,12 +278,11 @@ def case_account_api():
 
 
     # call the API to close the case 
-    url = "https://agd9kg004g.execute-api.us-west-2.amazonaws.com/v1/sender/close_incoming_sms_case" # PROD
-    # url = "https://pqmgc8vel6.execute-api.us-west-2.amazonaws.com/v1/sender/close_incoming_sms_case" # DEV
+    url = st.secrets["api"]["case_close_api_url"]
 
     headers = {
         'Content-Type':'application/json',
-        'x-api-key':'ja2mfRpohq9hmtMri9Rp7aav9kJt6F5t9wHGHtGW'
+        'x-api-key': st.secrets["api"]["x_api_key"]
     }
     logger.info(f"Case close API will run with this paylod: {api_body}")
     response = requests.post(url, headers=headers, data=json.dumps(api_body))
