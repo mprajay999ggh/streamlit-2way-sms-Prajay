@@ -361,7 +361,7 @@ def update_apptable():
 AUTHORIZE_URL = "https://accounts.google.com/o/oauth2/auth"
 TOKEN_URL = "https://oauth2.googleapis.com/token"
 REFRESH_TOKEN_URL = "https://oauth2.googleapis.com/token"
-REVOKE_TOKEN_URL = "https://oauth2.googleapis.com/revoke"
+REVOKE_TOKEN_URL = None  # Set to None to avoid needing revocation_endpoint_auth_method
 CLIENT_ID = st.secrets["oauth"]["client_id"]
 CLIENT_SECRET = st.secrets["oauth"]["client_secret"]
 REDIRECT_URI = st.secrets["oauth"]["redirect_uri"]
@@ -370,7 +370,7 @@ SCOPE = "openid profile email"
 # ### Comment this stuff out if doing on Local Machine
 if "auth" not in st.session_state:
     # create a button to start the OAuth2 flow
-    oauth2 = OAuth2Component(CLIENT_ID, CLIENT_SECRET, AUTHORIZE_URL, TOKEN_URL, REFRESH_TOKEN_URL, REVOKE_TOKEN_URL, revocation_endpoint_auth_method="client_secret_post")
+    oauth2 = OAuth2Component(CLIENT_ID, CLIENT_SECRET, AUTHORIZE_URL, TOKEN_URL, REFRESH_TOKEN_URL, REVOKE_TOKEN_URL)
     result = oauth2.authorize_button(
         name="Continue with Google",
         icon="https://www.google.com.tw/favicon.ico",
